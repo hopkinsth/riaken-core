@@ -301,6 +301,21 @@ func (m *CrdtMap) Commit() (*rpb.DtUpdateResp, error) {
 	return res, err
 }
 
+// returns a new map on this key
+func (m *CrdtMap) NewMap() *CrdtMap {
+	return m.crdt.NewMap()
+}
+
+// returns a new set on this key
+func (m *CrdtMap) NewSet() *CrdtSet {
+	return m.crdt.NewSet()
+}
+
+// returns a new counter for this key
+func (m *CrdtMap) NewCounter() *CrdtCounter {
+	return m.crdt.NewCounter()
+}
+
 // Crdt can manually take raw opts via Do() and execute Fetch() or Update(),
 // however, it is preferred to call the Counter(), Set(), or Map() methods
 // and work with each object through those interfaces.
