@@ -301,17 +301,17 @@ func (m *CrdtMap) Commit() (*rpb.DtUpdateResp, error) {
 	return res, err
 }
 
-// returns a new map on this key
+// Returns a new CRDT map
 func (m *CrdtMap) NewMap() *CrdtMap {
 	return m.crdt.NewMap()
 }
 
-// returns a new set on this key
+// Returns a new CRDT set
 func (m *CrdtMap) NewSet() *CrdtSet {
 	return m.crdt.NewSet()
 }
 
-// returns a new counter for this key
+// Returns a new CRDT counter
 func (m *CrdtMap) NewCounter() *CrdtCounter {
 	return m.crdt.NewCounter()
 }
