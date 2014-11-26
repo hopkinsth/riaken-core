@@ -307,3 +307,29 @@ func TestCrdtMap(t *testing.T) {
 		t.Fatal(err.Error())
 	}
 }
+
+func TestMapMethods(t *testing.T) {
+	crdt := &Crdt{}
+	mp := &CrdtMap{crdt: crdt}
+
+	mp1 := crdt.NewMap()
+	mp2 := mp.NewMap()
+	if mp1.crdt != mp2.crdt {
+		t.Error("CrdtMap.NewMap() did not attach to the correct CRDT struct")
+	}
+
+	st1 := crdt.NewSet()
+	st2 := mp.NewSet()
+
+	if st1.crdt != st2.crdt {
+		t.Error("CrdtMap.NewSet() did not attach to the correct CRDT struct")
+	}
+
+	ct1 := crdt.NewCounter()
+	ct2 := mp.NewCounter()
+
+	if ct1.crdt != ct2.crdt {
+		t.Error("CrdtMap.NewCounter() did not attach to the correct CRDT struct")
+	}
+
+}
